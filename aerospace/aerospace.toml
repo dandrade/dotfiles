@@ -1,0 +1,211 @@
+
+# AEROSPACE CONFIG
+start-at-login = true
+
+after-login-command = []
+
+after-startup-command = [
+     'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color=0xff1688f0 inactive_color=0xff494d64 width=6.0'
+#     'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar'
+]
+
+
+on-focused-monitor-changed = [
+  'move-mouse monitor-lazy-center'
+]
+
+on-focus-changed = [
+  'move-mouse window-lazy-center',
+]
+
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+accordion-padding = 10
+
+default-root-container-layout = 'tiles'
+
+default-root-container-orientation = 'auto'
+
+key-mapping.preset = 'qwerty'
+
+[gaps]
+#outer.bottom numbers have to match presentation.sh variables. built-in retina display is excluded from presentation mode, so this only works on external monitors.
+outer.bottom =        8
+outer.top =       8
+outer.left =       8
+outer.right =      8
+inner.horizontal = 8
+inner.vertical =   8
+
+[exec]                   # Again, you don't need to copy all config sections to your config.
+inherit-env-vars = true  # If you don't touch "exec" section,
+
+[mode.main.binding]
+
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+
+# All possible modifiers: cmd, alt, ctrl, shift
+
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+# You can uncomment this line to open up terminal with cmd + enter shortcut
+# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+# cmd-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+cmd-slash = 'layout accordion horizontal vertical'
+cmd-backslash = 'layout tiles horizontal vertical'
+
+# alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app' # use Super + N to open new alacritty terminal
+cmd-enter = 'macos-native-fullscreen'
+#cmd-q = 'close'
+cmd-e = 'macos-native-minimize'
+cmd-m = 'fullscreen'
+cmd-left = 'workspace --wrap-around prev'
+cmd-right = 'workspace --wrap-around next'
+cmd-up = 'focus-monitor prev'
+cmd-down = 'focus-monitor next'
+cmd-shift-leftSquareBracket = 'move-workspace-to-monitor prev'
+cmd-shift-rightSquareBracket = 'move-workspace-to-monitor next'
+cmd-shift-c = 'reload-config'
+cmd-shift-f = 'layout floating tiling' # 'floating toggle' in i3
+f11 = 'fullscreen'
+
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+cmd-h = 'focus left'
+cmd-j = 'focus down'
+cmd-k = 'focus up'
+cmd-l = 'focus right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+cmd-shift-minus = 'resize smart -50'
+cmd-shift-equal = 'resize smart +50'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-3 = 'workspace 3'
+cmd-4 = 'workspace 4'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+cmd-7 = 'workspace 7'
+cmd-8 = 'workspace 8'
+cmd-9 = 'workspace 9'
+cmd-0 = 'workspace 10'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
+cmd-shift-5 = 'move-node-to-workspace 5'
+cmd-shift-6 = 'move-node-to-workspace 6'
+cmd-shift-7 = 'move-node-to-workspace 7'
+cmd-shift-8 = 'move-node-to-workspace 8'
+cmd-shift-9 = 'move-node-to-workspace 9'
+cmd-shift-0 = 'move-node-to-workspace 10'
+
+cmd-ctrl-1 = ['move-node-to-workspace 1', 'workspace 1']
+cmd-ctrl-2 = ['move-node-to-workspace 2', 'workspace 2']
+cmd-ctrl-3 = ['move-node-to-workspace 3', 'workspace 3']
+cmd-ctrl-4 = ['move-node-to-workspace 4', 'workspace 4']
+cmd-ctrl-5 = ['move-node-to-workspace 5', 'workspace 5']
+cmd-ctrl-6 = ['move-node-to-workspace 6', 'workspace 6']
+cmd-ctrl-7 = ['move-node-to-workspace 7', 'workspace 7']
+cmd-ctrl-8 = ['move-node-to-workspace 8', 'workspace 8']
+cmd-ctrl-9 = ['move-node-to-workspace 9', 'workspace 9']
+cmd-ctrl-0 = ['move-node-to-workspace 10', 'workspace 10']
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+alt-tab = 'workspace-back-and-forth'
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+cmd-shift-m = 'mode manage'
+cmd-shift-r = 'mode resize'
+
+# 'manage' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.manage.binding]
+esc = 'mode main'
+enter = 'mode main'
+c = ['reload-config', 'mode main'] # reload config
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+f = [
+    'layout floating tiling',
+    'mode main',
+] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+
+h = ['join-with left', 'mode main']
+j = ['join-with down', 'mode main']
+k = ['join-with up', 'mode main']
+l = ['join-with right', 'mode main']
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.readdle.smartemail-Mac'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]] 
+if.app-id = 'com.splode.pomotroid'
+run = 'move-node-to-workspace 6'
+
+
+[[on-window-detected]] 
+if.app-id = 'com.todoist.mac.Todoist' 
+run = 'move-node-to-workspace 6'
+
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 4'
+
+
+
