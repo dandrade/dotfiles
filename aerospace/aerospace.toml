@@ -11,7 +11,8 @@ after-startup-command = [
 
 
 on-focused-monitor-changed = [
-  'move-mouse monitor-lazy-center'
+  'move-mouse monitor-lazy-center',
+  'exec-and-forget ~/.config/aerospace/adjust-gaps.sh'
 ]
 
 on-focus-changed = [
@@ -38,7 +39,7 @@ key-mapping.preset = 'qwerty'
 [gaps]
 #outer.bottom numbers have to match presentation.sh variables. built-in retina display is excluded from presentation mode, so this only works on external monitors.
 outer.bottom =        8
-outer.top =       48
+outer.top =       15
 outer.left =       8
 outer.right =      8
 inner.horizontal = 8
