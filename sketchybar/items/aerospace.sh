@@ -38,11 +38,11 @@ for i in "${!SPACE_ICONS[@]}"; do
              --subscribe space.$sid aerospace_workspace_change
 done
 
-# Initial update - get focused workspace and update
-FOCUSED=$(aerospace list-workspaces --focused 2>/dev/null | tr -d '[:space:]')
+# Initial update - get focused workspace and update (with timeout to prevent blocking)
+FOCUSED=$(timeout 2 aerospace list-workspaces --focused 2>/dev/null | tr -d '[:space:]')
 if [ -n "$FOCUSED" ]; then
   sketchybar --set space.$FOCUSED icon.highlight=on background.border_color=$GREY
 fi
 
-# Update all workspaces with their window icons
-"$CONFIG_DIR/plugins/aerospace.sh" update_all
+# Update all workspaces with their window icons (run in background to not block startup)
+"$CONFIG_DIR/plugins/aerospace.sh" update_all &

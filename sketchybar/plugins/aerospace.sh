@@ -1,55 +1,66 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
+# Source colors - use absolute path as fallback
+if [ -n "$CONFIG_DIR" ]; then
+  source "$CONFIG_DIR/colors.sh"
+else
+  source "$HOME/.config/sketchybar/colors.sh"
+fi
 
-update_workspace() {
+# Colors for highlight states (hardcoded fallback)
+HIGHLIGHT_BORDER=${GREY:-0xff939ab7}
+NORMAL_BORDER=${BACKGROUND_2:-0x60494d64}
+ICON_SCRIPT="${CONFIG_DIR:-$HOME/.config/sketchybar}/plugins/icon_map.sh"
+
+# Update icons for a workspace
+get_workspace_icons() {
   local workspace="$1"
-  local is_focused="$2"
-
-  # Get windows in this workspace
-  local windows=$(aerospace list-windows --workspace "$workspace" --format '%{app-name}' 2>/dev/null)
-
+  local windows=$(timeout 1 aerospace list-windows --workspace "$workspace" --format '%{app-name}' 2>/dev/null)
   local icon_strip=""
+
   if [ -n "$windows" ]; then
     while IFS= read -r app; do
-      if [ -n "$app" ]; then
-        icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
-      fi
+      [ -n "$app" ] && icon_strip+=" $($ICON_SCRIPT "$app")"
     done <<< "$windows"
   fi
-
-  # Set highlight based on focus
-  local border_color=$BACKGROUND_2
-  local highlight="off"
-  if [ "$is_focused" = "true" ]; then
-    border_color=$GREY
-    highlight="on"
-  fi
-
-  sketchybar --animate tanh 10 --set "space.$workspace" \
-    label="$icon_strip" \
-    icon.highlight=$highlight \
-    background.border_color=$border_color
+  echo "$icon_strip"
 }
 
+# Fast update - only update changed workspaces
+update_changed() {
+  local focused="$FOCUSED_WORKSPACE"
+  local prev="$PREV_WORKSPACE"
+
+  # Update previous workspace (remove highlight)
+  if [ -n "$prev" ]; then
+    sketchybar --set "space.$prev" icon.highlight=off background.border_color="$NORMAL_BORDER"
+  fi
+
+  # Update focused workspace (add highlight)
+  if [ -n "$focused" ]; then
+    local icons=$(get_workspace_icons "$focused")
+    sketchybar --set "space.$focused" label="$icons" icon.highlight=on background.border_color="$HIGHLIGHT_BORDER"
+  fi
+}
+
+# Full update - update all workspaces
 update_all() {
-  local focused=$(aerospace list-workspaces --focused 2>/dev/null | tr -d '[:space:]')
+  local focused="$FOCUSED_WORKSPACE"
+  [ -z "$focused" ] && focused=$(timeout 1 aerospace list-workspaces --focused 2>/dev/null | tr -d '[:space:]')
 
   for sid in 1 2 3 4 5 6 7 8 9 10; do
-    local is_focused="false"
+    local icons=$(get_workspace_icons "$sid")
     if [ "$sid" = "$focused" ]; then
-      is_focused="true"
+      sketchybar --set "space.$sid" label="$icons" icon.highlight=on background.border_color="$HIGHLIGHT_BORDER"
+    else
+      sketchybar --set "space.$sid" label="$icons" icon.highlight=off background.border_color="$NORMAL_BORDER"
     fi
-    update_workspace "$sid" "$is_focused"
   done
 }
 
-# Handle workspace change event
-if [ "$SENDER" = "aerospace_workspace_change" ]; then
-  update_all
-elif [ "$1" = "update_all" ]; then
-  update_all
+# Use fast update if we have both workspaces, otherwise full update
+if [ -n "$FOCUSED_WORKSPACE" ] && [ -n "$PREV_WORKSPACE" ]; then
+  update_changed
 else
-  # Called from item subscription
   update_all
 fi

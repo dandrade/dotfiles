@@ -11,7 +11,7 @@ calendar=(
 	icon.padding_right=0
 	# If showing the time, leave the width as 45
 	# label.width=45
-	label.width=5
+	# label.width=5
 	label.align=right
 	padding_left=15
 	update_freq=30
