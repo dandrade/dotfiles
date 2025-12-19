@@ -1,0 +1,142 @@
+live_config_reload = true
+[env]
+TERM = "xterm-256color"
+
+#[shell]
+#program = "/opt/homebrew/bin/nu"
+
+[window]
+opacity = 0.7
+#blur = true
+padding.x = 18
+padding.y = 16
+dynamic_padding = false
+decorations = "Buttonless"
+
+# [font]
+# normal.family =  "Hack Nerd Font Mono"
+# normal.style = "Regular"
+# bold.family =  "Hack Nerd Font Mono"
+# bold.style = "Bold"
+# italic.family =  "Hack Nerd Font Mono"
+# italic.style = "Italic"
+# bold_italic.family =  "Hack Nerd Font Mono"
+# bold_italic.style = "Bold Italic"
+
+# size = 15
+#use_thin_strokes = true
+
+
+# theme
+#draw_bold_text_with_bright_colors = true
+
+# [colors.primary]
+# background = "#282a36"
+# foreground = "#eff0eb"
+
+# [colors.cursor]
+# cursor = "#97979b"
+
+# [colors.selection]
+# text = "#282a36"
+# background = "#feffff"
+
+# [colors.normal]
+# black = "#282a36"
+# red = "#ff5c57"
+# green = "#5af78e"
+# yellow = "#f3f99d"
+# blue = "#57c7ff"
+# magenta = "#ff6ac1"
+# cyan = "#9aedfe"
+# white = "#f1f1f0"
+
+# [colors.bright]
+# black = "#686868"
+# red = "#ff5c57"
+# green = "#5af78e"
+# yellow = "#f3f99d"
+# blue = "#57c7ff"
+# magenta = "#ff6ac1"
+# cyan = "#9aedfe"
+# white = "#eff0eb"
+
+
+# Nintendo
+# [colors.primary]
+# background = "#0d0d0d"  # Negro muy oscuro
+# foreground = "#ffffff"  # Blanco
+
+# [colors.normal]
+# black   = "#1a1a1a"
+# red     = "#e60012"     # Rojo Nintendo
+# green   = "#00cc44"
+# yellow  = "#ffcc00"
+# blue    = "#0066ff"
+# magenta = "#cc00ff"
+# cyan    = "#00ccff"
+# white   = "#d9d9d9"
+
+# [colors.bright]
+# black   = "#333333"
+# red     = "#ff0033"
+# green   = "#33ff77"
+# yellow  = "#ffff66"
+# blue    = "#3399ff"
+# magenta = "#ff66ff"
+# cyan    = "#66ffff"
+# white   = "#ffffff"
+
+# [colors.cursor]
+# text   = "#0d0d0d"
+# cursor = "#e60012"
+
+# [colors.selection]
+# text       = "#0d0d0d"
+# background = "#ffcccb"
+
+# [font]
+# normal.family = "FiraCode Nerd Font"
+# size = 12.0
+
+
+# Super Mario Bros
+[colors.primary]
+background = "#1a1a1a"  # Fondo oscuro estilo cueva
+foreground = "#ffffff"  # Blanco para buen contraste
+
+[colors.normal]
+black   = "#1a1a1a"
+red     = "#e4000f"  # Rojo Mario
+green   = "#00cc44"  # Verde Yoshi / tubos
+yellow  = "#ffcc00"  # Botones del overol
+blue    = "#0074d9"  # Azul overol
+magenta = "#ff77ff"  # Acento color Peach
+cyan    = "#00ffff"
+white   = "#d9d9d9"
+
+[colors.bright]
+black   = "#333333"
+red     = "#ff0033"
+green   = "#33ff77"
+yellow  = "#ffff66"
+blue    = "#3399ff"
+magenta = "#ff99ff"
+cyan    = "#66ffff"
+white   = "#ffffff"
+
+[colors.cursor]
+text   = "#1a1a1a"
+cursor = "#e4000f"
+
+[colors.selection]
+text       = "#000000"
+background = "#ffe6e6"
+
+[font]
+normal.family = "Press Start 2P"
+bold.family = "Press Start 2P"
+normal.style = "Regular"
+bold.style = "Bold"
+size = 12
+#use_thin_strokes = true
