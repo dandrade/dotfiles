@@ -5,7 +5,7 @@ start-at-login = true
 after-login-command = []
 
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
+  'exec-and-forget borders active_color=0xff00ff00 inactive_color=0xff494d64 width=10.0',
   'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar'
 ]
 
@@ -39,7 +39,7 @@ key-mapping.preset = 'qwerty'
 [gaps]
 #outer.bottom numbers have to match presentation.sh variables. built-in retina display is excluded from presentation mode, so this only works on external monitors.
 outer.bottom =        8
-outer.top =       48
+outer.top =       12
 outer.left =       8
 outer.right =      8
 inner.horizontal = 8

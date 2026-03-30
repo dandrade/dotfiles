@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/dam/dotfiles/logs/.af332db00e70d9463cece34793de19af2cd00cd3-audit.json",
+    "files": [
+        {
+            "date": 1774893576625,
+            "name": "/Users/dam/dotfiles/logs/mcp-puppeteer-2026-03-30.log",
+            "hash": "225e6b3866dd0d64c5e8772ccb3feac40d931151fca0f7831801d39f3b8663d0"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -112,3 +112,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# opencode
+export PATH=/Users/dam/.opencode/bin:$PATH
+
+. "$HOME/.atuin/bin/env"
+unalias duf
+eval "$(atuin init zsh)"
+export MAX_MCP_OUTPUT_TOKENS=1000000
+export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.13"

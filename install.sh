@@ -76,7 +76,10 @@ echo "     git clone https://github.com/zsh-users/zsh-syntax-highlighting \${ZSH
 echo ""
 echo "  4. Install tmux plugins (inside tmux): prefix + I"
 echo ""
-echo "  5. Restart your terminal"
+echo "  5. Install atuin (shell history):"
+echo "     curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh"
+echo ""
+echo "  6. Restart your terminal"
 echo ""
 if [ -d "$BACKUP_DIR" ]; then
     echo "Backups saved to: $BACKUP_DIR"
