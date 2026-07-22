@@ -97,7 +97,8 @@ eval "$(zoxide init zsh)"
 # Added by Windsurf
 nvm use 24.6.0
 export CLAUDE_POWERLINE_THEME=rose-pine
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"alias td="tmux detach"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+alias td="tmux detach"
 alias ta="tmux attach-session"
 alias lz="fzf --preview  'bat --style=numbers --color=always --line-range :500 {}'"
 alias lg='lazygit'
@@ -121,3 +122,20 @@ unalias duf
 eval "$(atuin init zsh)"
 export MAX_MCP_OUTPUT_TOKENS=1000000
 export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.13"
+
+alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+# Extra tool paths — prepend only if the directory exists (keeps this portable).
+for _p in \
+  "$HOME/.cargo/bin" \
+  "$HOME/.orbstack/bin" \
+  "$HOME/.yarn/bin" \
+  "$HOME/.pub-cache/bin" \
+  "/Applications/Ghostty.app/Contents/MacOS"; do
+  [ -d "$_p" ] && case ":$PATH:" in *":$_p:"*) ;; *) export PATH="$_p:$PATH" ;; esac
+done
+unset _p
+
+# Machine-specific overrides (git-ignored). Put anything with hardcoded absolute
+# paths or secrets here instead of committing it.
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

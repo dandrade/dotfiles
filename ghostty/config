@@ -1,0 +1,73 @@
+# Ghostty Configuration
+# Migrated from Alacritty
+# custom-shader = ~/.config/ghostty/shaders/ghostty-aurora/aurora.glsl
+# custom-shader-animation = true
+# Font Configuration
+font-family = JetBrainsMono Nerd Font
+font-size = 15
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
+
+# Window Configuration
+window-decoration = true
+window-padding-x = 12
+window-padding-y = 10
+window-padding-balance = true
+window-padding-color = extend
+window-theme = system
+
+# Cursor Configuration
+cursor-style = block
+cursor-style-blink = true
+cursor-invert-fg-bg = true
+
+# Scrollback
+scrollback-limit = 10000
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Theme: Kanagawa Wave
+background = 1f1f28
+foreground = dcd7ba
+
+# Palette (Normal Colors)
+palette = 0=#090618
+palette = 1=#c34043
+palette = 2=#76946a
+palette = 3=#c0a36e
+palette = 4=#7e9cd8
+palette = 5=#957fb8
+palette = 6=#6a9589
+palette = 7=#c8c093
+
+# Palette (Bright Colors)
+palette = 8=#727169
+palette = 9=#e82424
+palette = 10=#98bb6c
+palette = 11=#e6c384
+palette = 12=#7fb4ca
+palette = 13=#938aa9
+palette = 14=#7aa89f
+palette = 15=#dcd7ba
+
+# Cursor Colors
+cursor-color = c8c093
+cursor-text = 1f1f28
+
+# Selection Colors
+selection-foreground = dcd7ba
+selection-background = 2d4f67
+
+# Keybindings
+# Shift+Return sends escape sequence
+keybind = shift+enter=text:\x1b\x0d
+
+# macOS specific
+macos-option-as-alt = false
+macos-titlebar-style = hidden
+
+# Shell integration
+shell-integration = detect

@@ -4,10 +4,13 @@ brew "tmux"
 brew "neovim"
 brew "starship"
 
+# Terminal
+cask "ghostty"
+
 # Window Management (macOS)
-cask "alacritty"
 cask "nikitabobko/tap/aerospace"
 brew "koekeishiya/formulae/skhd"
+brew "FelixKratz/formulae/sketchybar"
 
 # CLI Tools (from .zshrc)
 brew "git"
@@ -20,6 +23,7 @@ brew "lazygit"
 brew "zoxide"
 brew "vivid"
 brew "broot"
+brew "atuin"
 
 # Fonts (Nerd Fonts)
 tap "homebrew/cask-fonts"
