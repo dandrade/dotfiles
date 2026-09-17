@@ -1,0 +1,60 @@
+# Brewfile.optional — third-party taps and heavyweight casks.
+#
+# Split out from the main Brewfile because third-party taps disappear without
+# notice, and a dead tap aborts the whole bundle. bootstrap.sh runs this with
+# `|| true` so a failure here never blocks provisioning.
+#
+#   brew bundle --file=~/dotfiles/Brewfile.optional || true
+#
+# Review before running on a new machine: install only what you still use.
+
+# Homebrew 7 refuses untrusted third-party taps; run `brew trust <tap>` first
+# (bootstrap.sh does this) or each install here fails.
+tap "dart-lang/dart"
+tap "leoafarias/fvm"
+tap "heroku/brew"
+tap "stripe/stripe-cli"
+tap "supabase/tap"
+tap "infisical/get-cli"
+tap "facebook/fb"
+tap "notwadegrimridge/brew"
+tap "koekeishiya/formulae"
+
+# --- Hotkey daemon ----------------------------------------------------------
+# The old machine had skhd 0.3.9 from asmvik/formulae (a fork). koekeishiya is
+# upstream; switch unless the fork carried a patch you rely on.
+brew "koekeishiya/formulae/skhd"
+
+# --- Flutter / Dart ---------------------------------------------------------
+brew "leoafarias/fvm/fvm"
+brew "cocoapods"
+
+# --- Services ---------------------------------------------------------------
+brew "heroku/brew/heroku"
+brew "stripe/stripe-cli/stripe"
+brew "supabase/tap/supabase"
+brew "infisical/get-cli/infisical"
+
+# --- iOS tooling ------------------------------------------------------------
+# idb-companion pulls a large dependency chain; only needed for iOS automation.
+brew "facebook/fb/idb-companion"
+
+# --- Menu bar ---------------------------------------------------------------
+cask "notwadegrimridge/brew/pingplace"
+
+# --- Casks needing extra approval -------------------------------------------
+# macfuse and vagrant require approving a system extension in
+# System Settings > Privacy & Security, and on Apple Silicon macfuse also
+# needs a reduced boot security policy. Skip unless genuinely needed —
+# OrbStack covers most container/VM use.
+# cask "macfuse"
+# cask "vagrant"
+
+# --- Deprecated on the old machine, deliberately not carried over -----------
+# fig            → discontinued, became Amazon Q
+# phantomjs      → deprecated, superseded by headless Chrome
+# adoptopenjdk8  → deprecated, use temurin
+# exa            → archived upstream, replaced by eza
+# z              → redundant with zoxide
+# llvm@15        → pinned old version
+# appflowy       → reinstall from the app if still used
