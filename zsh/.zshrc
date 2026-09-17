@@ -1,11 +1,9 @@
-# Kiro CLI pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
-if [[ ":$FPATH:" != *":/Users/dam/.zsh/completions:"* ]]; then export FPATH="/Users/dam/.zsh/completions:$FPATH"; fi
-#[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+# ---------------------------------------------------------------------------
+# oh-my-zsh
+# ---------------------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
-  git zsh-autosuggestions
   git
   brew
   common-aliases
@@ -15,127 +13,121 @@ plugins=(
   colored-man-pages
   colorize
   cp
-  zsh-syntax-highlighting
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
-alias ls='eza --icons'
-alias la='eza --long  --all --group --header --git --icons'
-alias cat='bat'
-alias vim=nvim
-export LS_COLORS="$(vivid generate snazzy)"
+source "$ZSH/oh-my-zsh.sh"
 
-export PATH=/Users/dam/mjml_bin/node_modules/.bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+# common-aliases defines `duf`; drop it so the real duf(1) wins.
+(( ${+aliases[duf]} )) && unalias duf
 
-export LDFLAGS="-L/opt/homebrew/opt/readline/lib:$LDFLAGS"
-export CPPFLAGS="-I/opt/homebrew/opt/readline/include:$CPPFLAGS"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
-export optflags="-Wno-error=implicit-function-declaration"
-export LDFLAGS="-L/opt/homebrew/opt/libffi/lib:$LDFLAGS"
-export CPPFLAGS="-I/opt/homebrew/opt/libffi/include:$CPPFLAGS"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dam/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dam/google-cloud-sdk/path.zsh.inc'; fi
+# ---------------------------------------------------------------------------
+# Completions
+# ---------------------------------------------------------------------------
+if [ -d "$HOME/.zsh/completions" ]; then
+  case ":$FPATH:" in
+    *":$HOME/.zsh/completions:"*) ;;
+    *) export FPATH="$HOME/.zsh/completions:$FPATH" ;;
+  esac
+fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/dam/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dam/google-cloud-sdk/completion.zsh.inc'; fi
-
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# pnpm
-export PNPM_HOME="/Users/dam/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export BAT_THEME=Dracula
-
-# ~/.zshrc
-export PATH=/Users/dam/.local/bin:$PATH
-
-PATH=~/.console-ninja/.bin:$PATH
-export PATH="/opt/homebrew/opt/imagemagick@6/bin:$PATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-eval "$(starship init zsh)"
-eval "$(rbenv init -)"
-
-
-eval "$(fzf --zsh)"
-export INFISICAL_API_URL="http://secrets.danielandrade.co"
-export PATH=$HOME/development/flutter/bin:$PATH
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/dam/.dart-cli-completion/zsh-config.zsh ]] && . /Users/dam/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
-#export PATH="$PATH":"$HOME/.pub-cache/bin" 
-#export FVM_CACHE_PATH="/Users/dam/.fvm/versions"
-# nuevo java
-#export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home
-
-
-export XDG_CONFIG_HOME="$HOME/.config"
-
-eval "$(zoxide init zsh)"
-
-# Added by Windsurf
-nvm use 24.6.0
-export CLAUDE_POWERLINE_THEME=rose-pine
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-alias td="tmux detach"
-alias ta="tmux attach-session"
-alias lz="fzf --preview  'bat --style=numbers --color=always --line-range :500 {}'"
-alias lg='lazygit'
-source /Users/dam/.config/broot/launcher/bash/br
-
-# bun completions
-[ -s "/Users/dam/.bun/_bun" ] && source "/Users/dam/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-
-# opencode
-export PATH=/Users/dam/.opencode/bin:$PATH
-
-. "$HOME/.atuin/bin/env"
-unalias duf
-eval "$(atuin init zsh)"
-export MAX_MCP_OUTPUT_TOKENS=1000000
-export CLOUDSDK_PYTHON="/opt/homebrew/bin/python3.13"
-
-alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
-
-# Extra tool paths — prepend only if the directory exists (keeps this portable).
+# ---------------------------------------------------------------------------
+# PATH — prepend only if the directory exists (keeps this portable).
+# Order matters: later entries win. Homebrew must beat /usr/local (Intel leftovers).
+# ---------------------------------------------------------------------------
 for _p in \
   "$HOME/.cargo/bin" \
   "$HOME/.orbstack/bin" \
   "$HOME/.yarn/bin" \
   "$HOME/.pub-cache/bin" \
-  "/Applications/Ghostty.app/Contents/MacOS"; do
+  "$HOME/go/bin" \
+  "$HOME/.local/bin" \
+  "$HOME/.rbenv/bin" \
+  "$HOME/.bun/bin" \
+  "$HOME/.opencode/bin" \
+  "$HOME/.console-ninja/.bin" \
+  "$HOME/Library/pnpm" \
+  "$HOME/development/flutter/bin" \
+  "/opt/homebrew/opt/llvm/bin" \
+  "/opt/homebrew/opt/imagemagick@6/bin" \
+  "/opt/homebrew/opt/postgresql@17/bin" \
+  "/Applications/Ghostty.app/Contents/MacOS" \
+  "/opt/homebrew/bin" \
+  "/opt/homebrew/sbin"; do
   [ -d "$_p" ] && case ":$PATH:" in *":$_p:"*) ;; *) export PATH="$_p:$PATH" ;; esac
 done
 unset _p
 
-# Machine-specific overrides (git-ignored). Put anything with hardcoded absolute
-# paths or secrets here instead of committing it.
+export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+
+# ---------------------------------------------------------------------------
+# Build flags (readline + libffi, for native gem/python builds)
+# ---------------------------------------------------------------------------
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/libffi/lib/pkgconfig"
+export optflags="-Wno-error=implicit-function-declaration"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# ---------------------------------------------------------------------------
+# Environment
+# ---------------------------------------------------------------------------
+export XDG_CONFIG_HOME="$HOME/.config"
+export JAVA_HOME="$(/usr/libexec/java_home -v 21 2>/dev/null)"
+export BAT_THEME=Dracula
+export CLAUDE_POWERLINE_THEME=rose-pine
+export MAX_MCP_OUTPUT_TOKENS=1000000
+export INFISICAL_API_URL="http://secrets.danielandrade.co"
+
+# ---------------------------------------------------------------------------
+# Aliases
+# ---------------------------------------------------------------------------
+alias ls='eza --icons'
+alias la='eza --long --all --group --header --git --icons'
+alias cat='bat'
+alias vim=nvim
+alias td="tmux detach"
+alias ta="tmux attach-session"
+alias lg='lazygit'
+alias lz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+# ---------------------------------------------------------------------------
+# Version managers
+# ---------------------------------------------------------------------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+command -v rbenv >/dev/null && eval "$(rbenv init -)"
+
+# ---------------------------------------------------------------------------
+# Prompt & shell tools
+# ---------------------------------------------------------------------------
+# LS_COLORS is cached: regenerating it with vivid on every shell costs ~100ms.
+# Refresh with: vivid generate snazzy > ~/.cache/ls_colors
+_ls_colors_cache="$HOME/.cache/ls_colors"
+if [ ! -f "$_ls_colors_cache" ] && command -v vivid >/dev/null; then
+  mkdir -p "$HOME/.cache" && vivid generate snazzy > "$_ls_colors_cache"
+fi
+[ -f "$_ls_colors_cache" ] && export LS_COLORS="$(<"$_ls_colors_cache")"
+unset _ls_colors_cache
+
+command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"
+command -v fzf      >/dev/null && eval "$(fzf --zsh)"
+
+[ -s "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+command -v atuin >/dev/null && eval "$(atuin init zsh)"
+
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
+
+# ---------------------------------------------------------------------------
+# Machine-specific overrides (git-ignored). Anything with hardcoded absolute
+# paths, per-machine tooling or secrets belongs in ~/.zshrc.local, not here.
+# ---------------------------------------------------------------------------
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

@@ -6,3 +6,4 @@
 
 # Machine-specific shell config (PATH, secrets) — never commit
 .zshrc.local
+logs/

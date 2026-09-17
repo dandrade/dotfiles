@@ -87,6 +87,7 @@ link "$DOTFILES_DIR/skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
 echo "[zsh]"
 link "$DOTFILES_DIR/zsh/.zshrc"    "$HOME/.zshrc"
 link "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
+link "$DOTFILES_DIR/zsh/.zshenv"   "$HOME/.zshenv"
 
 echo ""
 echo "=== Installation complete! ==="
