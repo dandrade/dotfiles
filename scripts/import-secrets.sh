@@ -21,7 +21,9 @@ trap cleanup EXIT
 
 echo "=== Importing secrets ==="
 echo "Decrypting (passphrase from the export)..."
-gpg --decrypt "$ARCHIVE" 2>/dev/null | tar xzf - -C "$STAGE" || {
+# See export-secrets.sh: loopback pinentry so gpg can prompt without a tty.
+export GPG_TTY="${GPG_TTY:-$(tty 2>/dev/null)}"
+gpg --decrypt --pinentry-mode loopback "$ARCHIVE" 2>/dev/null | tar xzf - -C "$STAGE" || {
   echo "ERROR: decryption failed — wrong passphrase or corrupt archive"; exit 1; }
 
 [ -f "$STAGE/MANIFEST.txt" ] && { echo ""; cat "$STAGE/MANIFEST.txt"; echo ""; }

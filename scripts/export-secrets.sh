@@ -73,7 +73,12 @@ fi
 # --- Encrypt ----------------------------------------------------------------
 echo ""
 echo "Encrypting (you will be asked for a passphrase — remember it)..."
-tar czf - -C "$STAGE" . | gpg --symmetric --cipher-algo AES256 -o "$ARCHIVE"
+# --pinentry-mode loopback + GPG_TTY: without these gpg cannot prompt when
+# stdin is not a terminal (over ssh, or from a non-interactive shell) and
+# fails with "Inappropriate ioctl for device".
+export GPG_TTY="${GPG_TTY:-$(tty 2>/dev/null)}"
+tar czf - -C "$STAGE" . | \
+  gpg --symmetric --cipher-algo AES256 --pinentry-mode loopback -o "$ARCHIVE"
 
 if [ -f "$ARCHIVE" ]; then
   echo ""
