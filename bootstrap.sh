@@ -185,7 +185,20 @@ else
     || fail "tpm"
 fi
 
-# --- 10. Did anything write into the repo? ----------------------------------
+# --- 10. Do the scripts the summary promises actually exist? ----------------
+# A summary that points at a missing script sends you looking for something
+# that was never written.
+step "manual-step scripts"
+for s in scripts/clone-repos.sh scripts/export-secrets.sh \
+         scripts/import-secrets.sh scripts/verify.sh; do
+  if [ -x "$DOTFILES/$s" ]; then note "$s"
+  elif [ -f "$DOTFILES/$s" ]; then fail "$s exists but is not executable (chmod +x)"
+  else fail "$s is missing"; fi
+done
+[ -f "$DOTFILES/repos.tsv" ] && note "repos.tsv ($(($(wc -l < "$DOTFILES/repos.tsv") - 1)) repos)" \
+                             || fail "repos.tsv is missing (clone-repos.sh needs it)"
+
+# --- 11. Did anything write into the repo? ----------------------------------
 # Installers love appending to ~/.zshrc, which is now a symlink into the repo.
 step "repo cleanliness"
 if [ "$DRY_RUN" = 0 ] && [ -d "$DOTFILES/.git" ]; then
@@ -217,7 +230,8 @@ cat <<'MANUAL'
        ./scripts/export-secrets.sh          # old
        ./scripts/import-secrets.sh <file>   # new
   2. Re-authenticate: gh auth login, gcloud auth login, atuin login
-  3. Repos:   ./scripts/clone-repos.sh      (needs SSH from step 1)
+  3. Repos:   ./scripts/clone-repos.sh --dry-run   (needs SSH from step 1)
+              ./scripts/clone-repos.sh
   4. nvim:    open it once so lazy.nvim restores from lazy-lock.json
   5. tmux:    start it, then prefix + I
   6. Verify:  ./scripts/verify.sh

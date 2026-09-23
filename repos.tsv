@@ -1,0 +1,45 @@
+remote	client	notes
+git@bitbucket.org:dandrademx/api.git	CocoBongo	
+git@bitbucket.org:dandrademx/bookingnator.git	CocoBongo	
+git@bitbucket.org:dandrademx/comprometidos-survey-app.git	CocoBongo	
+git@bitbucket.org:dandrademx/cora.git	CocoBongo	
+git@bitbucket.org:dandrademx/costco.git	CocoBongo	
+git@bitbucket.org:dandrademx/eva.git	Freelancing	
+git@bitbucket.org:dandrademx/media_kit.git	CocoBongo	
+git@bitbucket.org:dandrademx/nova.git	CocoBongo	worktrees:2
+git@bitbucket.org:dandrademx/pocpos.git	CocoBongo	
+git@bitbucket.org:dandrademx/qondominium_api.git	Personal	
+git@bitbucket.org:dandrademx/reporter-be.git	CocoBongo	
+git@bitbucket.org:dandrademx/reporter-fe.git	CocoBongo	
+git@bitbucket.org:dandrademx/rh_api.git	CocoBongo	
+git@bitbucket.org:dandrademx/tag_sentation_api.git	CocoBongo	
+git@bitbucket.org:dandrademx/tag_sentation.git	CocoBongo	
+git@bitbucket.org:dandrademx/tag-2.0.git	CocoBongo	
+git@github.com:Coco-Bongo/bookingnator.git	CocoBongo	
+git@github.com:Coco-Bongo/brazaletes.git	CocoBongo	
+git@github.com:Coco-Bongo/coco-book.git	CocoBongo	worktrees:1
+git@github.com:Coco-Bongo/nova-cashier.git	CocoBongo	
+git@github.com:Coco-Bongo/nova-confirmation.git	CocoBongo	
+git@github.com:Coco-Bongo/nova.git	CocoBongo	worktrees:3
+git@github.com:Coco-Bongo/payment-links.git	CocoBongo	
+git@github.com:cristianKumul/comegotv.git	Freelancing	
+git@github.com:cristianKumul/comegovirtual.git	Freelancing	
+git@github.com:cristianKumul/cvcomego.git	Freelancing	
+git@github.com:dandrade/axoryxlabs.com.git	Personal	
+git@github.com:dandrade/Go-Bootcamp.git	Learning	
+git@github.com:entropyx/epyc-feeds.git	Entropy	
+git@github.com:HectorCoco/inventario.git	CocoBongo	
+git@github.com:iddeas-accounts/comegic-checkout-form-plugin.git	Misc	
+git@github.com:iddeas-accounts/comegic-checkout-plugin.git	Misc	
+git@github.com:iddeas-accounts/memylink.git	Freelancing	
+git@github.com:iddeas-accounts/zirfos-backend.git	Freelancing	
+git@github.com:kin/dot-com.git	Kin	
+git@github.com:kin/snippets.git	Kin	
+git@ssh.dev.azure.com:v3/world2meet/DMC/dmc-celltrips-cloud	W2M	
+https://github.com/alanmontgomery/ionic-react-qr-code.git	CocoBongo	
+https://github.com/Coco-Bongo/cocobongo-cloud.git	CocoBongo	
+https://github.com/hotrails-dev/hotwire-modals-article.git	CocoBongo	
+https://github.com/mercadolibre/point-mainapp-demo-android.git	StudioProjects	
+https://github.com/monorkin/blog.git	Personal	
+https://github.com/zitadel/oidc.git	CocoBongo	
+https://world2meet@dev.azure.com/world2meet/GGVV/_git/app-mobile-driver	W2M	

@@ -30,6 +30,7 @@ brew "vivid"
 # --- Core CLI ---------------------------------------------------------------
 brew "git"
 brew "gh"
+brew "ghq"
 brew "ripgrep"
 brew "fd"
 brew "bat"
