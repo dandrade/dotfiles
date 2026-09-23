@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Filename: ~/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/colors.sh
-# ~/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/colors.sh
-
-# Source the colorscheme file
-# NOTE: el colorscheme "linkarzu" no se migro a esta maquina.
-# Se usa la paleta Catppuccin de abajo en su lugar.
-# source "$HOME/github/dotfiles-latest/colorscheme/active/active-colorscheme.sh"
+# Origen: felixkratz-linkarzu. Este archivo no define colores propios: mapea las
+# 14 variables linkarzu_colorNN de la paleta compartida a nombres de sketchybar.
+# Para cambiar de tema se edita la paleta, no este archivo.
+source "$HOME/dotfiles/colorscheme/active/active-colorscheme.sh"
 
 export MIC_LEVEL=40
 
@@ -26,24 +23,24 @@ export MIC_LEVEL=40
 # export BG2=0xff414550
 
 #### Catppuccin
-export BLACK=0xff181926
-export WHITE=0xffcad3f5
-export RED=0xffed8796
-export GREEN=0xffa6da95
-export BLUE=0xff8aadf4
-export YELLOW=0xffeed49f
-export ORANGE=0xfff5a97f
-export MAGENTA=0xffc6a0f6
-export GREY=0xff939ab7
-export TRANSPARENT=0x00000000
-export BG0=0xff1e1e2e
-export BG0O50=0x801e1e2e
-export BG0O60=0x991e1e2e
-export BG0O70=0xB21e1e2e
-export BG0O80=0xCC1e1e2e
-export BG0O85=0xD91e1e2e
-export BG1=0x603c3e4f
-export BG2=0x60494d64
+#export BLACK=0xff181926
+#export WHITE=0xffcad3f5
+#export RED=0xffed8796
+#export GREEN=0xffa6da95
+#export BLUE=0xff8aadf4
+#export YELLOW=0xffeed49f
+#export ORANGE=0xfff5a97f
+#export MAGENTA=0xffc6a0f6
+#export GREY=0xff939ab7
+#export TRANSPARENT=0x00000000
+#export BG0=0xff1e1e2e
+#export BG0O50=0x801e1e2e
+#export BG0O60=0x991e1e2e
+#export BG0O70=0xB21e1e2e
+#export BG0O80=0xCC1e1e2e
+#export BG0O85=0xD91e1e2e
+#export BG1=0x603c3e4f
+#export BG2=0x60494d64
 
 # # Eldritch Theme
 # # https://github.com/eldritch-theme
@@ -73,30 +70,30 @@ export BG2=0x60494d64
 # export BG2=0x60494d64
 
 # Linkarzu Theme
-# export BLACK=0xff${linkarzu_color10#\#}
-# export WHITE=0xff${linkarzu_color14#\#}
-# export RED=0xff${linkarzu_color11#\#}
-# export GREEN=0xff${linkarzu_color02#\#}
-# export BLUE=0xff${linkarzu_color03#\#}
-# export YELLOW=0xff${linkarzu_color12#\#}
-# export ORANGE=0xff${linkarzu_color04#\#}
-# export MAGENTA=0xff${linkarzu_color01#\#}
-# export GREY=0xff${linkarzu_color09#\#}
-# export TRANSPARENT=0x00000000
-# export BG0=0xff${linkarzu_color10#\#}
-# export BG0O50=0x80${linkarzu_color10#\#}
-# export BG0O60=0x99${linkarzu_color10#\#}
-# export BG0O70=0xb2${linkarzu_color10#\#}
-# export BG0O80=0xcc${linkarzu_color10#\#}
+export BLACK=0xff${linkarzu_color10#\#}
+export WHITE=0xff${linkarzu_color14#\#}
+export RED=0xff${linkarzu_color11#\#}
+export GREEN=0xff${linkarzu_color02#\#}
+export BLUE=0xff${linkarzu_color03#\#}
+export YELLOW=0xff${linkarzu_color12#\#}
+export ORANGE=0xff${linkarzu_color04#\#}
+export MAGENTA=0xff${linkarzu_color01#\#}
+export GREY=0xff${linkarzu_color09#\#}
+export TRANSPARENT=0x00000000
+export BG0=0xff${linkarzu_color10#\#}
+export BG0O50=0x80${linkarzu_color10#\#}
+export BG0O60=0x99${linkarzu_color10#\#}
+export BG0O70=0xb2${linkarzu_color10#\#}
+export BG0O80=0xcc${linkarzu_color10#\#}
 # export BG0O85=0xD91e1e2e
 # export BG0O85=0xD9212337
 # This sets the color of the bar
 # Eldritch dark
-# export BG0O85=0xE5${linkarzu_color10#\#}
+export BG0O85=0xE5${linkarzu_color10#\#}
 # Eldritch light
 # export BG0O85=0xCF212337
-# export BG1=0x60${linkarzu_color13#\#}
-# export BG2=0x60${linkarzu_color07#\#}
+export BG1=0x60${linkarzu_color13#\#}
+export BG2=0x60${linkarzu_color07#\#}
 
 # General bar colors
 export BAR_COLOR=$BG0O85
