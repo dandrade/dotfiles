@@ -6,9 +6,14 @@ update() {
   source "$CONFIG_DIR/icons.sh"
   INTERFACE="$(route get default | grep interface | awk '{print $2}')"
 
-  # `airport` was removed in macOS 14+. Try ipconfig, then networksetup.
-  # Both return nothing (or "<redacted>") unless sketchybar has Location Services access.
-  SSID="$(ipconfig getsummary "$INTERFACE" 2>/dev/null | awk -F ' SSID : ' '/ SSID : / {print $2}' | head -n 1)"
+  # `airport` se elimino en macOS 14+, y desde entonces el SSID sale "<redacted>"
+  # para cualquier proceso sin autorizacion de Localizacion. El helper ssid si la
+  # pide, asi que basta autorizarlo una vez. Si no esta compilado o no se ha
+  # autorizado, caemos a los metodos del sistema y por ultimo a un literal.
+  SSID="$("$CONFIG_DIR/helper/SSID.app/Contents/MacOS/ssid" 2>/dev/null)"
+  if [ -z "$SSID" ]; then
+    SSID="$(ipconfig getsummary "$INTERFACE" 2>/dev/null | awk -F ' SSID : ' '/ SSID : / {print $2}' | head -n 1)"
+  fi
   if [ -z "$SSID" ] || [ "$SSID" = "<redacted>" ]; then
     SSID="$(networksetup -getairportnetwork "$INTERFACE" 2>/dev/null | sed -n 's/^Current Wi-Fi Network: //p')"
   fi
