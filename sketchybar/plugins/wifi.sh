@@ -4,8 +4,15 @@
 
 update() {
   source "$CONFIG_DIR/icons.sh"
-  SSID="$(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F ' SSID: ' '/ SSID: / {print $2}')"
   INTERFACE="$(route get default | grep interface | awk '{print $2}')"
+
+  # `airport` was removed in macOS 14+. Try ipconfig, then networksetup.
+  # Both return nothing (or "<redacted>") unless sketchybar has Location Services access.
+  SSID="$(ipconfig getsummary "$INTERFACE" 2>/dev/null | awk -F ' SSID : ' '/ SSID : / {print $2}' | head -n 1)"
+  if [ -z "$SSID" ] || [ "$SSID" = "<redacted>" ]; then
+    SSID="$(networksetup -getairportnetwork "$INTERFACE" 2>/dev/null | sed -n 's/^Current Wi-Fi Network: //p')"
+  fi
+  [ -z "$SSID" ] && SSID="Wi-Fi"
 
   # Determine the hardware type (WiFi or Ethernet) of the active interface
   HARDWARE_TYPE="$(networksetup -listnetworkserviceorder | grep -B 1 "Device: $INTERFACE" | head -n 1 | awk '{print $2}')"

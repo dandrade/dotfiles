@@ -8,6 +8,7 @@ notification=(
   # update_freq=10
   label.drawing=on
   padding_right=3
+  icon.font="$FONT:Bold:17.0"
   label.font="$FONT:Bold:17.0"
   # label.padding_left=3
   script="$PLUGIN_DIR/notification.sh"

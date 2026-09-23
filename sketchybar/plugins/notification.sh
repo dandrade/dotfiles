@@ -3,7 +3,7 @@
 # Filename: ~/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/plugins/notification.sh
 # ~/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/plugins/notification.sh
 
-source "$HOME/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/colors.sh"
+source "$CONFIG_DIR/colors.sh"
 
 custom_notification="$HOME/github/dotfiles-latest/custom-notification.txt"
 

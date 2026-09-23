@@ -13,6 +13,13 @@ PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are st
 # FONT="JetBrainsMono Nerd Font"
 FONT="MesloLGM Nerd Font"
 
+# icons.sh es 42 glifos SF Symbols (U+100000+) contra 2 de Nerd Font, y
+# sketchybar NO hace fallback de fuente: dibuja un cuadro si la fuente del item
+# no trae el glifo. Por eso los iconos van en SF Pro y solo los pocos items con
+# glifos Nerd hardcodeados (battery, mic, timer, notification, BT/restart)
+# sobreescriben icon.font a "$FONT".
+ICON_FONT="SF Pro"
+
 # All paddings use this value (icon, label, background), default is 3 but I
 # decreased it
 PADDINGS=1
@@ -47,7 +54,7 @@ sketchybar --bar "${bar[@]}"
 # Setting up default values
 defaults=(
   updates=when_shown
-  icon.font="$FONT:Bold:14.0"
+  icon.font="$ICON_FONT:Bold:14.0"
   icon.color=$ICON_COLOR
   icon.padding_left=$PADDINGS
   icon.padding_right=$PADDINGS

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-pid=$(ps -A | grep -v 'grep' | grep -v 'sh' | grep ~/.config/sketchybar/plugins/timer.py | cut -d ' ' -f 1)
-kill ${pid}
+# `ps | cut` devolvia un campo vacio cuando el timer no corre, y `kill` sin
+# argumentos escribia su uso al log en cada click. pgrep es exacto y silencioso.
+pids=$(pgrep -f "$CONFIG_DIR/plugins/timer.py")
+[ -n "$pids" ] && kill $pids
 
 sketchybar --set timer label=""

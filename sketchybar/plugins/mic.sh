@@ -7,7 +7,7 @@
 
 # echo "" >/tmp/mic.sh.log
 
-source "$HOME/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/colors.sh"
+source "$CONFIG_DIR/colors.sh"
 MIC_NAME_FILE="/tmp/${USER}_mic_name"
 
 # Attempt to get the current input device name

@@ -5,6 +5,17 @@
 
 CONFIG_FILE="$HOME/.config/aerospace/aerospace.toml"
 
+# `sed -i` de macOS se niega a editar symlinks ("in-place editing only works for
+# regular files") y ~/.config/aerospace/aerospace.toml apunta a ~/dotfiles.
+# Resolvemos la cadena de symlinks para editar el archivo real.
+while [ -L "$CONFIG_FILE" ]; do
+  target="$(readlink "$CONFIG_FILE")"
+  case "$target" in
+    /*) CONFIG_FILE="$target" ;;
+    *)  CONFIG_FILE="$(dirname "$CONFIG_FILE")/$target" ;;
+  esac
+done
+
 # Detectar el monitor enfocado (built-in vs externo) con timeout
 FOCUSED_MONITOR=$(timeout 2 aerospace list-monitors --focused --format '%{monitor-name}' 2>/dev/null)
 

@@ -18,10 +18,16 @@ get_workspace_icons() {
   local windows=$(timeout 1 aerospace list-windows --workspace "$workspace" --format '%{app-name}' 2>/dev/null)
   local icon_strip=""
 
-  if [ -n "$windows" ]; then
-    while IFS= read -r app; do
-      [ -n "$app" ] && icon_strip+=" $($ICON_SCRIPT "$app")"
-    done <<< "$windows"
+  # icon_map acepta varios nombres de una vez y ya separa los glifos con un
+  # espacio. Llamarlo una sola vez evita el doble espacio que descuadraba los
+  # iconos, y ahorra un proceso por ventana.
+  local apps=()
+  while IFS= read -r app; do
+    [ -n "$app" ] && apps+=("$app")
+  done <<< "$windows"
+
+  if [ ${#apps[@]} -gt 0 ]; then
+    icon_strip="$("$ICON_SCRIPT" "${apps[@]}")"
   fi
   echo "$icon_strip"
 }

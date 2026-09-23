@@ -5,7 +5,7 @@
 
 # echo "" >/tmp/mikrotik.sh.log
 
-source "$HOME/github/dotfiles-latest/sketchybar/felixkratz-linkarzu/colors.sh"
+source "$CONFIG_DIR/colors.sh"
 
 # I'm monitoring the bridge interface, as I have 2 ISPs, from the bgridge
 # interface perspective the Tx and Rx are opposites, so that cause a bit of

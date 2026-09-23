@@ -9,6 +9,7 @@ mic=(
   label.drawing=on
   padding_right=4
   label.padding_right=2
+  icon.font="$FONT:Bold:14.0"
   label.font="$FONT:Regular:12.0"
   script="$PLUGIN_DIR/mic.sh"
   click_script="$PLUGIN_DIR/mic_click.sh"
