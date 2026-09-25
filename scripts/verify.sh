@@ -137,8 +137,27 @@ if [ -d "$DOTFILES/.git" ]; then
   fi
 fi
 
-# --- 7. Fonts ---------------------------------------------------------------
+# --- 7. External and absolute paths -----------------------------------------
+# Two ways a tracked file stops being portable:
+#  - sourcing something outside the repo: works only where that path happens to
+#    exist. sketchybar lost its colorscheme this way, sourcing a palette from
+#    ~/github/dotfiles-latest, which was never part of the repo.
+#  - a hardcoded /Users/<name> path: breaks under any other account. Installers
+#    reintroduce these by appending to ~/.zshrc, which is a symlink into here.
+section "External and absolute paths"
+ext=$(grep -rnE '^[^#]*\b(source|\.)[[:space:]]+"?\$\{?HOME\}?/(github|Develop|Documents|Downloads)/' \
+        "$DOTFILES" --include='*.sh' --include='.zsh*' 2>/dev/null | grep -v '/\.git/' || true)
+[ -z "$ext" ] && ok "nothing sources outside the repo" || {
+  bad "tracked files depend on paths outside the repo:"; echo "$ext" | sed 's/^/          /'; }
+
+abs=$(grep -rnE '^[^#]*/Users/[a-z]' "$DOTFILES" \
+        --include='*.sh' --include='.zsh*' --include='*.toml' 2>/dev/null \
+      | grep -v '/\.git/' | grep -vE '\.zshrc\.local' || true)
+[ -z "$abs" ] && ok "no hardcoded /Users/<name> paths" || {
+  bad "tracked files hardcode a user path (use \$HOME):"; echo "$abs" | sed 's/^/          /'; }
+
 # ghostty/config names a font; on the old machine it asked for one of the 67
+# --- 8. Fonts ---------------------------------------------------------------
 # installed nerd fonts that was not actually among them.
 section "Fonts"
 if [ -f "$DOTFILES/ghostty/config" ]; then
@@ -152,7 +171,7 @@ if [ -f "$DOTFILES/ghostty/config" ]; then
   fi
 fi
 
-# --- 8. Compare against the baseline ---------------------------------------
+# --- 9. Compare against the baseline ---------------------------------------
 section "Baseline comparison"
 if [ -f "$BASELINE_DIR/commands.txt" ]; then
   echo "$CLEAN_PATH" | tr ':' '\n' | while read -r d; do
@@ -171,7 +190,7 @@ else
   warn "no baseline — run './verify.sh --baseline' on the old machine first"
 fi
 
-# --- 9. Connectivity --------------------------------------------------------
+# --- 10. Connectivity --------------------------------------------------------
 section "Connectivity"
 ssh -o BatchMode=yes -o ConnectTimeout=5 -T git@github.com 2>&1 | grep -q "successfully authenticated" \
   && ok "github.com SSH" || warn "github.com SSH not working (run gh auth login / restore keys)"

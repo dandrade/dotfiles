@@ -131,12 +131,3 @@ command -v atuin >/dev/null && eval "$(atuin init zsh)"
 # paths, per-machine tooling or secrets belongs in ~/.zshrc.local, not here.
 # ---------------------------------------------------------------------------
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
-
-# bun completions
-[ -s "/Users/dam/.bun/_bun" ] && source "/Users/dam/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-. "$HOME/.local/bin/env"
