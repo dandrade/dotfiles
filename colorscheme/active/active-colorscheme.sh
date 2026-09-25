@@ -29,18 +29,34 @@
 # export linkarzu_color13="#292e42" # bg highlight -> BACKGROUND_1
 # export linkarzu_color14="#c0caf5" # fg -> iconos y texto
 
-### Kanagawa Wave - ACTIVO (combina con tu Ghostty y tu nvim)
-export linkarzu_color01="#957fb8" # oniViolet
-export linkarzu_color02="#98bb6c" # springGreen
-export linkarzu_color03="#7e9cd8" # crystalBlue
-export linkarzu_color04="#ffa066" # surimiOrange
-export linkarzu_color05="#7aa89f" # waveAqua2
-export linkarzu_color06="#6a9589" # waveAqua1
-export linkarzu_color07="#54546d" # sumiInk6 -> BACKGROUND_2
-export linkarzu_color08="#c8c093" # fujiGray claro
-export linkarzu_color09="#727169" # fujiGray -> GREY
-export linkarzu_color10="#1f1f28" # sumiInk3 -> fondo de la barra
-export linkarzu_color11="#e82424" # samuraiRed
-export linkarzu_color12="#e6c384" # carpYellow
-export linkarzu_color13="#363646" # sumiInk4 -> BACKGROUND_1
-export linkarzu_color14="#dcd7ba" # fujiWhite -> iconos y texto
+### Kanagawa Wave
+# export linkarzu_color01="#957fb8" # oniViolet
+# export linkarzu_color02="#98bb6c" # springGreen
+# export linkarzu_color03="#7e9cd8" # crystalBlue
+# export linkarzu_color04="#ffa066" # surimiOrange
+# export linkarzu_color05="#7aa89f" # waveAqua2
+# export linkarzu_color06="#6a9589" # waveAqua1
+# export linkarzu_color07="#54546d" # sumiInk6 -> BACKGROUND_2
+# export linkarzu_color08="#c8c093" # fujiGray claro
+# export linkarzu_color09="#727169" # fujiGray -> GREY
+# export linkarzu_color10="#1f1f28" # sumiInk3 -> fondo de la barra
+# export linkarzu_color11="#e82424" # samuraiRed
+# export linkarzu_color12="#e6c384" # carpYellow
+# export linkarzu_color13="#363646" # sumiInk4 -> BACKGROUND_1
+# export linkarzu_color14="#dcd7ba" # fujiWhite -> iconos y texto
+
+### Batman - ACTIVO (el esquema original, recuperado de colorscheme/list/batman.sh)
+export linkarzu_color01="#c0b004" # amarillo oscuro -> MAGENTA
+export linkarzu_color02="#666666" # gris medio     -> GREEN
+export linkarzu_color03="#c2c2c2" # gris claro     -> BLUE
+export linkarzu_color04="#667e83" # azul apagado   -> ORANGE
+export linkarzu_color05="#877c03" # oliva
+export linkarzu_color06="#c3f4fe" # cyan palido
+export linkarzu_color07="#141414" # casi negro     -> BACKGROUND_2
+export linkarzu_color08="#ffffff" # blanco
+export linkarzu_color09="#8a96b1" # azul grisaceo  -> GREY
+export linkarzu_color10="#000000" # negro puro     -> fondo de la barra
+export linkarzu_color11="#f8b4b8" # rosa           -> RED
+export linkarzu_color12="#fef9c6" # crema          -> YELLOW
+export linkarzu_color13="#333333" # gris oscuro    -> BACKGROUND_1
+export linkarzu_color14="#ffffff" # blanco         -> iconos y texto
